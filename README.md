@@ -72,7 +72,8 @@ mental-health-chatbot/
 
 ## 📷 Screenshots
 
-![alt text](image.png)
+![alt text](![image](https://github.com/user-attachments/assets/51d704f9-0895-45e8-be82-99c5b392e8d1)
+)
 
 ---
 
