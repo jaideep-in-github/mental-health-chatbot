@@ -70,9 +70,9 @@ mental-health-chatbot/
 
 ---
 
-## 📷 Screenshots
+## 📷 Chatbot Interface
 
-![alt text](image.png)
+![AI Chatbot Interface](aichatbot_image.png)
 
 ---
 
