@@ -1,0 +1,20 @@
+{
+  "session_id": "c52cfcb0-a4f7-4d63-8ed4-db93f40e799d",
+  "conversations": [
+    {
+      "timestamp": "2025-06-19 13:09:58",
+      "user_message": "i am scared about my exams",
+      "bot_response": "I am so scared of this game"
+    },
+    {
+      "timestamp": "2025-06-19 13:10:16",
+      "user_message": "i am going to do suicide",
+      "bot_response": "I'm concerned about what you've shared. Please consider reaching out to a mental health professional or crisis helpline like the 988 Suicide & Crisis Lifeline (call or text 988). Remember that support is available, and you're not alone."
+    },
+    {
+      "timestamp": "2025-06-19 13:10:41",
+      "user_message": "yes i am alone",
+      "bot_response": "Feeling lonely is a universal human experience. Remember that connections can come in many forms."
+    }
+  ]
+}

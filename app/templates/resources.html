@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Mental Health Support Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Mental Health Support Bot</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Chat</a></li>
+                    <li><a href="{{ url_for('resources') }}" class="active">Resources</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="resources-container">
+            <h2>Mental Health Resources</h2>
+            
+            <section class="resource-category">
+                <h3>Crisis Resources</h3>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>988 Suicide & Crisis Lifeline</h4>
+                        <p>24/7, free and confidential support for people in distress.</p>
+                        <p><strong>Call or Text:</strong> 988</p>
+                        <a href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>Crisis Text Line</h4>
+                        <p>Text-based crisis support available 24/7.</p>
+                        <p><strong>Text HOME to:</strong> 741741</p>
+                        <a href="https://www.crisistextline.org/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>SAMHSA's National Helpline</h4>
+                        <p>Treatment referral and information service for mental health and substance use disorders.</p>
+                        <p><strong>Call:</strong> 1-800-662-HELP (4357)</p>
+                        <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="resource-category">
+                <h3>Finding Professional Help</h3>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>Psychology Today Therapist Finder</h4>
+                        <p>Search for therapists in your area by specialty, insurance, and more.</p>
+                        <a href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener noreferrer">Find a Therapist</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>BetterHelp</h4>
+                        <p>Online therapy platform with professional counselors.</p>
+                        <a href="https://www.betterhelp.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>Open Path Psychotherapy Collective</h4>
+                        <p>Affordable therapy for individuals, couples, and families between $30 and $60 per session.</p>
+                        <a href="https://openpathcollective.org/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="resource-category">
+                <h3>Self-Help Resources</h3>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>Mental Health America</h4>
+                        <p>Information, community, and tools to help improve mental health.</p>
+                        <a href="https://www.mhanational.org/mental-health-resources" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>NAMI (National Alliance on Mental Illness)</h4>
+                        <p>Education, support groups, and advocacy for individuals and families affected by mental illness.</p>
+                        <a href="https://nami.org/help" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h4>Headspace</h4>
+                        <p>Meditation and mindfulness app with guided exercises for stress, anxiety, and sleep.</p>
+                        <a href="https://www.headspace.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="disclaimer">
+                <h3>Important Note</h3>
+                <p>These resources are provided for informational purposes only and do not constitute an endorsement. If you are experiencing a mental health emergency, please call 911 or go to your nearest emergency room.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Note: This is an AI assistant and not a replacement for professional mental health support.</p>
+        <p>If you're in crisis, please call or text 988 to reach the Suicide & Crisis Lifeline.</p>
+    </footer>
+</body>
+</html> 

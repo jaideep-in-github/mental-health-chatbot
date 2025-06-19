@@ -1,0 +1,20 @@
+{
+  "session_id": "750210f6-398e-42c7-ad28-16baf4f702bd",
+  "conversations": [
+    {
+      "timestamp": "2025-06-19 13:14:40",
+      "user_message": "i am not happy to see my exams result",
+      "bot_response": "I have a test tomorrow, so I'm just going to leave it at this for now."
+    },
+    {
+      "timestamp": "2025-06-19 13:15:02",
+      "user_message": "tell me what should i do now",
+      "bot_response": "I'm going to go out on a limb and say that he doesn't know how to spell."
+    },
+    {
+      "timestamp": "2025-06-19 13:16:13",
+      "user_message": "ok leave this topic tell me about yourself \ndo you not frustated to see this crucial world",
+      "bot_response": "You're not alone in this journey. ok I'll try to fix it Is there something specific that triggered these feelings?"
+    }
+  ]
+}

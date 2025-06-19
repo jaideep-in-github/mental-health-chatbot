@@ -1,24 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mental Health Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Mental Health Chatbot 🧠</h1>
-
-        <form method="POST">
-            <textarea name="message" placeholder="Share your feelings..." required></textarea>
-            <button type="submit">Send</button>
-        </form>
-
-        <div class="chat-box">
-            {% if bot_reply %}
-                <div class="message user"><strong>You:</strong> {{ user_input }}</div>
-                <div class="message bot"><strong>Mira:</strong> {{ bot_reply }}</div>
-            {% endif %}
+    <header>
+        <div class="header-content">
+            <h1>Mental Health Support Bot</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="active">Chat</a></li>
+                    <li><a href="{{ url_for('resources') }}">Resources</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        <p>Hi there! I'm here to listen and support you with your mental health concerns. How are you feeling today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <form id="chat-form">
+                    <textarea id="user-input" placeholder="Type your message here..." required></textarea>
+                    <div class="button-group">
+                        <button type="button" id="reset-chat">New Conversation</button>
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Note: This is an AI assistant and not a replacement for professional mental health support.</p>
+        <p>If you're in crisis, please call or text 988 to reach the Suicide & Crisis Lifeline.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatForm = document.getElementById('chat-form');
+            const userInput = document.getElementById('user-input');
+            const chatMessages = document.getElementById('chat-messages');
+            const resetButton = document.getElementById('reset-chat');
+            
+            // Submit form
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const message = userInput.value.trim();
+                if (message) {
+                    // Add user message to chat
+                    addMessage(message, 'user');
+                    
+                    // Clear input
+                    userInput.value = '';
+                    
+                    // Get bot response
+                    getBotResponse(message);
+                }
+            });
+            
+            // Reset chat
+            resetButton.addEventListener('click', function() {
+                if (confirm('Are you sure you want to start a new conversation?')) {
+                    // Clear chat messages except the first one
+                    chatMessages.innerHTML = `
+                        <div class="message bot">
+                            <div class="message-content">
+                                <p>Hi there! I'm here to listen and support you with your mental health concerns. How are you feeling today?</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Reset chat on server
+                    fetch('/api/reset', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                }
+            });
+            
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                
+                const paragraph = document.createElement('p');
+                paragraph.textContent = text;
+                
+                contentDiv.appendChild(paragraph);
+                messageDiv.appendChild(contentDiv);
+                chatMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Get bot response
+            function getBotResponse(message) {
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot typing';
+                typingDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Send request to API
+                fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Remove typing indicator
+                    chatMessages.removeChild(typingDiv);
+                    
+                    // Add bot response
+                    addMessage(data.response, 'bot');
+                })
+                .catch(error => {
+                    // Remove typing indicator
+                    chatMessages.removeChild(typingDiv);
+                    
+                    // Add error message
+                    addMessage('Sorry, I encountered an error. Please try again.', 'bot');
+                    console.error('Error:', error);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
